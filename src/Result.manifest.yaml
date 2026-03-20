@@ -1,0 +1,52 @@
+identity:
+  id: "aria.Result"
+  purpose: "Abstract railway result type with success/failure branching"
+  domain: "aria"
+  subdomain: "result"
+  verb: null
+  entity: "Result"
+
+layer: L0_PRIMITIVE
+
+contract:
+  input: "mixed"
+  output:
+    success: "Success<T>"
+    failure: "Failure<E>"
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies: []
+
+connections: []
+
+context_budget:
+  to_use: 100
+  to_modify: 300
+  to_extend: 500
+  to_replace: 150
+
+test_contract:
+  scenarios:
+    - "creates a success result via Success::of()"
+    - "success is a success"
+    - "success value returns the wrapped value"
+    - "creates a failure result via Failure::from()"
+    - "failure is a failure"
+    - "failure error returns the wrapped error"
+    - "map on success transforms the value"
+    - "map on failure passes through unchanged"
+    - "flatMap on success chains to the next result"
+    - "flatMap on failure passes through unchanged"
+    - "mapFailure on failure transforms the error"
+    - "mapFailure on success passes through unchanged"
+    - "recover on failure converts to success"
+    - "recover on success passes through unchanged"
+    - "getOrElse on success returns the value"
+    - "getOrElse on failure returns the default"
+
+stability: STABLE
+
+lifecycle:
+  phase: CANDIDATE

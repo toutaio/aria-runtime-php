@@ -1,0 +1,44 @@
+identity:
+  id: "aria.StructuredFailure"
+  purpose: "Immutable structured error value with code, message, and context"
+  domain: "aria"
+  subdomain: "failure"
+  verb: null
+  entity: "StructuredFailure"
+
+layer: L0_PRIMITIVE
+
+contract:
+  input: "string $code, string $message, array $context"
+  output:
+    success: "StructuredFailure"
+    failure: null
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies: []
+
+connections: []
+
+context_budget:
+  to_use: 60
+  to_modify: 200
+  to_extend: 350
+  to_replace: 100
+
+test_contract:
+  scenarios:
+    - "creates a structured failure with code and message"
+    - "creates a structured failure with code, message, and context"
+    - "code returns the failure code string"
+    - "message returns the failure message string"
+    - "context returns empty array when not provided"
+    - "is immutable — withContext returns a different instance"
+    - "withMessage returns a new instance with updated message"
+    - "withContext merges new context with existing"
+
+stability: STABLE
+
+lifecycle:
+  phase: CANDIDATE

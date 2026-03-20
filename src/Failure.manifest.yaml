@@ -1,0 +1,46 @@
+identity:
+  id: "aria.Failure"
+  purpose: "Failure branch of the Result type wrapping an error"
+  domain: "aria"
+  subdomain: "result"
+  verb: null
+  entity: "Failure"
+
+layer: L0_PRIMITIVE
+
+contract:
+  input: "E"
+  output:
+    success: null
+    failure: "Failure<E>"
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies:
+  - "aria.Result"
+  - "aria.Success"
+
+connections: []
+
+context_budget:
+  to_use: 80
+  to_modify: 250
+  to_extend: 400
+  to_replace: 120
+
+test_contract:
+  scenarios:
+    - "creates a failure result via Failure::from()"
+    - "failure is a failure"
+    - "failure error returns the wrapped error"
+    - "map on failure passes through unchanged"
+    - "flatMap on failure passes through unchanged"
+    - "mapFailure on failure transforms the error"
+    - "recover on failure converts to success"
+    - "getOrElse on failure returns the default"
+
+stability: STABLE
+
+lifecycle:
+  phase: CANDIDATE

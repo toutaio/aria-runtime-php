@@ -1,0 +1,39 @@
+identity:
+  id: "aria.StatusCode"
+  purpose: "Branded type for HTTP status code integers"
+  domain: "aria"
+  subdomain: "type"
+  verb: null
+  entity: "StatusCode"
+
+layer: L0_PRIMITIVE
+
+contract:
+  input: "int"
+  output:
+    success: "StatusCode"
+    failure: null
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies: []
+
+connections: []
+
+context_budget:
+  to_use: 50
+  to_modify: 100
+  to_extend: 200
+  to_replace: 80
+
+test_contract:
+  scenarios:
+    - "creates StatusCode via from()"
+    - "StatusCode equal instances are equal"
+    - "StatusCode different instances are not equal"
+
+stability: EXPERIMENTAL
+
+lifecycle:
+  phase: DRAFT

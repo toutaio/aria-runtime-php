@@ -1,0 +1,42 @@
+identity:
+  id: "aria.RailError"
+  purpose: "Provenance wrapper for errors on the failure rail in composed flows"
+  domain: "aria"
+  subdomain: "error"
+  verb: null
+  entity: "RailError"
+
+layer: L0_PRIMITIVE
+
+contract:
+  input: "string $originAru, string $traceId, string $timestamp, E $error"
+  output:
+    success: "RailError<E>"
+    failure: null
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies:
+  - "aria.StructuredFailure"
+
+connections: []
+
+context_budget:
+  to_use: 50
+  to_modify: 150
+  to_extend: 300
+  to_replace: 80
+
+test_contract:
+  scenarios:
+    - "can be constructed with all four fields"
+    - "exposes all fields as public readonly properties"
+    - "preserves a StructuredFailure as the error type"
+    - "preserves a plain string as the error type"
+    - "holds an ISO 8601 timestamp"
+
+stability: EXPERIMENTAL
+
+lifecycle:
+  phase: DRAFT

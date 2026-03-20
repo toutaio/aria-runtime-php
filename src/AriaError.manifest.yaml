@@ -1,0 +1,41 @@
+identity:
+  id: "aria.AriaError"
+  purpose: "Domain-typed error for the ARIA runtime package"
+  domain: "aria"
+  subdomain: "error"
+  verb: null
+  entity: "AriaError"
+
+layer: L0_PRIMITIVE
+
+contract:
+  input: "string $code, string $message, array $context"
+  output:
+    success: "AriaError"
+    failure: null
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies: []
+
+connections: []
+
+context_budget:
+  to_use: 60
+  to_modify: 200
+  to_extend: 350
+  to_replace: 100
+
+test_contract:
+  scenarios:
+    - "can be constructed with code, message, and context"
+    - "has correct code constants"
+    - "withMessage returns a new instance with updated message"
+    - "withContext merges new context with existing context"
+    - "context defaults to empty array"
+
+stability: EXPERIMENTAL
+
+lifecycle:
+  phase: DRAFT

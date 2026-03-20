@@ -1,0 +1,39 @@
+identity:
+  id: "aria.TraceId"
+  purpose: "Branded type for trace/correlation ID strings"
+  domain: "aria"
+  subdomain: "type"
+  verb: null
+  entity: "TraceId"
+
+layer: L0_PRIMITIVE
+
+contract:
+  input: "string"
+  output:
+    success: "TraceId"
+    failure: null
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies: []
+
+connections: []
+
+context_budget:
+  to_use: 50
+  to_modify: 100
+  to_extend: 200
+  to_replace: 80
+
+test_contract:
+  scenarios:
+    - "creates TraceId via from()"
+    - "TraceId equal instances are equal"
+    - "TraceId different instances are not equal"
+
+stability: EXPERIMENTAL
+
+lifecycle:
+  phase: DRAFT

@@ -1,0 +1,43 @@
+identity:
+  id: "aria.http.validate.Response"
+  purpose: "HTTP response contract declaring statusCode, headers, and body"
+  domain: "aria"
+  subdomain: "http"
+  verb: "validate"
+  entity: "Response"
+
+layer: L1_ATOM
+
+contract:
+  input: null
+  output:
+    success: null
+    failure: null
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies:
+  - "aria.StatusCode"
+  - "aria.HeaderMap"
+  - "aria.HttpBody"
+
+connections: []
+
+context_budget:
+  to_use: 50
+  to_modify: 100
+  to_extend: 200
+  to_replace: 80
+
+test_contract:
+  scenarios:
+    - "interface exists"
+    - "declares statusCode() returning StatusCode"
+    - "declares headers() returning HeaderMap"
+    - "declares body() returning HttpBody"
+
+stability: EXPERIMENTAL
+
+lifecycle:
+  phase: DRAFT

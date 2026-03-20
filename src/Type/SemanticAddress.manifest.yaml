@@ -1,0 +1,39 @@
+identity:
+  id: "aria.SemanticAddress"
+  purpose: "Branded type for dot-separated semantic address strings"
+  domain: "aria"
+  subdomain: "type"
+  verb: null
+  entity: "SemanticAddress"
+
+layer: L0_PRIMITIVE
+
+contract:
+  input: "string"
+  output:
+    success: "SemanticAddress"
+    failure: null
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies: []
+
+connections: []
+
+context_budget:
+  to_use: 50
+  to_modify: 100
+  to_extend: 200
+  to_replace: 80
+
+test_contract:
+  scenarios:
+    - "creates SemanticAddress via from()"
+    - "SemanticAddress equal instances are equal"
+    - "SemanticAddress different instances are not equal"
+
+stability: EXPERIMENTAL
+
+lifecycle:
+  phase: DRAFT

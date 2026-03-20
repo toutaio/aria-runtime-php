@@ -1,0 +1,39 @@
+identity:
+  id: "aria.HttpBody"
+  purpose: "Branded type for HTTP body strings"
+  domain: "aria"
+  subdomain: "type"
+  verb: null
+  entity: "HttpBody"
+
+layer: L0_PRIMITIVE
+
+contract:
+  input: "string"
+  output:
+    success: "HttpBody"
+    failure: null
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies: []
+
+connections: []
+
+context_budget:
+  to_use: 50
+  to_modify: 100
+  to_extend: 200
+  to_replace: 80
+
+test_contract:
+  scenarios:
+    - "creates HttpBody via from()"
+    - "HttpBody equal instances are equal"
+    - "HttpBody different instances are not equal"
+
+stability: EXPERIMENTAL
+
+lifecycle:
+  phase: DRAFT

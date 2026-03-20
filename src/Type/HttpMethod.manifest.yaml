@@ -1,0 +1,39 @@
+identity:
+  id: "aria.HttpMethod"
+  purpose: "Branded type for HTTP method strings"
+  domain: "aria"
+  subdomain: "type"
+  verb: null
+  entity: "HttpMethod"
+
+layer: L0_PRIMITIVE
+
+contract:
+  input: "string"
+  output:
+    success: "HttpMethod"
+    failure: null
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies: []
+
+connections: []
+
+context_budget:
+  to_use: 50
+  to_modify: 100
+  to_extend: 200
+  to_replace: 80
+
+test_contract:
+  scenarios:
+    - "creates HttpMethod via from()"
+    - "HttpMethod equal instances are equal"
+    - "HttpMethod different instances are not equal"
+
+stability: EXPERIMENTAL
+
+lifecycle:
+  phase: DRAFT

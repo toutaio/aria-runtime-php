@@ -1,0 +1,45 @@
+identity:
+  id: "aria.Success"
+  purpose: "Success branch of the Result type wrapping a value"
+  domain: "aria"
+  subdomain: "result"
+  verb: null
+  entity: "Success"
+
+layer: L0_PRIMITIVE
+
+contract:
+  input: "T"
+  output:
+    success: "Success<T>"
+    failure: null
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies:
+  - "aria.Result"
+
+connections: []
+
+context_budget:
+  to_use: 80
+  to_modify: 250
+  to_extend: 400
+  to_replace: 120
+
+test_contract:
+  scenarios:
+    - "creates a success result via Success::of()"
+    - "success is a success"
+    - "success value returns the wrapped value"
+    - "map on success transforms the value"
+    - "flatMap on success chains to the next result"
+    - "mapFailure on success passes through unchanged"
+    - "recover on success passes through unchanged"
+    - "getOrElse on success returns the value"
+
+stability: STABLE
+
+lifecycle:
+  phase: CANDIDATE

@@ -1,0 +1,45 @@
+identity:
+  id: "aria.http.validate.Request"
+  purpose: "HTTP request contract declaring method, uri, headers, and body"
+  domain: "aria"
+  subdomain: "http"
+  verb: "validate"
+  entity: "Request"
+
+layer: L1_ATOM
+
+contract:
+  input: null
+  output:
+    success: null
+    failure: null
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies:
+  - "aria.HttpMethod"
+  - "aria.UriPath"
+  - "aria.HeaderMap"
+  - "aria.HttpBody"
+
+connections: []
+
+context_budget:
+  to_use: 50
+  to_modify: 100
+  to_extend: 200
+  to_replace: 80
+
+test_contract:
+  scenarios:
+    - "interface exists"
+    - "declares method() returning HttpMethod"
+    - "declares uri() returning UriPath"
+    - "declares headers() returning HeaderMap"
+    - "declares body() returning HttpBody"
+
+stability: EXPERIMENTAL
+
+lifecycle:
+  phase: DRAFT

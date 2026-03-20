@@ -1,0 +1,39 @@
+identity:
+  id: "aria.HeaderMap"
+  purpose: "Branded type for HTTP header maps"
+  domain: "aria"
+  subdomain: "type"
+  verb: null
+  entity: "HeaderMap"
+
+layer: L0_PRIMITIVE
+
+contract:
+  input: "array<string, list<string>>"
+  output:
+    success: "HeaderMap"
+    failure: null
+  side_effects: NONE
+  idempotent: true
+  deterministic: true
+
+dependencies: []
+
+connections: []
+
+context_budget:
+  to_use: 50
+  to_modify: 100
+  to_extend: 200
+  to_replace: 80
+
+test_contract:
+  scenarios:
+    - "creates HeaderMap via from()"
+    - "HeaderMap equal instances are equal"
+    - "HeaderMap different instances are not equal"
+
+stability: EXPERIMENTAL
+
+lifecycle:
+  phase: DRAFT
